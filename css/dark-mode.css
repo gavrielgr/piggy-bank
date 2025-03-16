@@ -104,3 +104,55 @@
 [data-theme="dark"] .rocket-body {
     background-color: var(--primary);
 }
+
+/* Visualization adjustments for dark mode */
+[data-theme="dark"] .tree-container {
+    background-color: #1E3229;
+}
+
+[data-theme="dark"] .tree-trunk {
+    background-color: #A47551;
+}
+
+[data-theme="dark"] .tree-leaves {
+    background-color: #2E7D32;
+}
+
+[data-theme="dark"] .tree-fruit {
+    background-color: #FFC107;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+[data-theme="dark"] .space-background {
+    background-color: #05071A;
+}
+
+[data-theme="dark"] .star {
+    box-shadow: 0 0 3px #FFF;
+}
+
+[data-theme="dark"] .planet {
+    background-color: #C33812;
+    box-shadow: inset -15px -15px 0 rgba(0,0,0,0.5);
+}
+
+[data-theme="dark"] .rocket-body {
+    background-color: var(--primary);
+}
+
+[data-theme="dark"] .rocket-head {
+    background-color: #BDBDBD;
+}
+
+[data-theme="dark"] .rocket-window {
+    background-color: #0288D1;
+    border-color: #01579B;
+}
+
+[data-theme="dark"] .rocket-fin {
+    background-color: #D84315;
+}
+
+[data-theme="dark"] .rocket-flame {
+    background: linear-gradient(to bottom, #F57C00, #FFD54F);
+}
