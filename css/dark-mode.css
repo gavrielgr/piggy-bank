@@ -1,0 +1,106 @@
+/**
+ * קופת החיסכון המשפחתית - סגנונות למצב כהה
+ */
+
+[data-theme="dark"] {
+    /* צבעים בסיסיים */
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #FFE66D;
+    --background: #1A1A2E;
+    --surface: #16213E;
+    --text: #F7F9FC;
+    --text-secondary: #B8C2CC;
+    --border: #364156;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+    
+    /* התאמות ספציפיות למצב כהה */
+    --certificate-bg: #1E1E30;
+}
+
+/* התאמות ספציפיות לממשק במצב כהה */
+[data-theme="dark"] .app-container {
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .info-card {
+    background-color: #1E2333;
+}
+
+[data-theme="dark"] .simulator-container {
+    background-color: #1E2333;
+}
+
+[data-theme="dark"] .tab {
+    border-color: #364156;
+}
+
+[data-theme="dark"] .certificate {
+    border-color: #FFE66D;
+    background-color: var(--certificate-bg);
+}
+
+[data-theme="dark"] .settings-card {
+    background-color: #1E2333;
+}
+
+[data-theme="dark"] .toast {
+    background-color: #1E2333;
+}
+
+[data-theme="dark"] .btn-outline {
+    border-color: #4A5568;
+    color: var(--text);
+}
+
+[data-theme="dark"] .btn-toggle {
+    background-color: #364156;
+}
+
+[data-theme="dark"] .btn-toggle.active {
+    background-color: var(--secondary);
+}
+
+[data-theme="dark"] .modal-content {
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] input, 
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: #1E2333;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] input:focus, 
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+    border-color: var(--secondary);
+}
+
+[data-theme="dark"] .parent-card {
+    background-color: #1E2333;
+}
+
+/* התאמת אנימציות וויזואליזציות */
+[data-theme="dark"] .tree-trunk {
+    background-color: #A47551;
+}
+
+[data-theme="dark"] .tree-leaves {
+    background-color: #2E7D32;
+}
+
+[data-theme="dark"] .space-background {
+    background-color: #05071A;
+}
+
+[data-theme="dark"] .star {
+    box-shadow: 0 0 3px #FFF;
+}
+
+[data-theme="dark"] .rocket-body {
+    background-color: var(--primary);
+}

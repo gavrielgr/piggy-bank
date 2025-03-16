@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B6B">
+    <meta name="description" content="קופת חיסכון דיגיטלית לילדים - למידה פיננסית חווייתית">
+    
+    <title>קופת החיסכון המשפחתית</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/dark-mode.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+    <!-- הודעות Toast -->
+    <div class="toast-container" id="toast-container"></div>
+    
+    <!-- שכבת הודעות ריבית -->
+    <div class="interest-overlay" id="interest-overlay">
+        <div class="interest-message">
+            <div class="interest-close" onclick="hideInterestMessage()"><i class="fas fa-times"></i></div>
+            <div class="interest-icon"><i class="fas fa-piggy-bank"></i></div>
+            <h2>ריבית חודשית!</h2>
+            <p>הרווחת ריבית חודשית בסך</p>
+            <div class="interest-amount">₪ <span id="interest-amount-text">0</span></div>
+            <p>המשך כך! החיסכון שלך גדל!</p>
+        </div>
+    </div>
+    
+    <!-- בקרת הורים -->
+    <div class="parent-controls" id="parent-controls">
+        <div class="parent-panel">
+            <div class="parent-header">
+                <h2>פאנל ניהול הורים</h2>
+                <button class="parent-close" onclick="hideParentControls()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="parent-tabs">
+                <div class="parent-tab active" onclick="switchParentTab('overview')">סקירה כללית</div>
+                <div class="parent-tab" onclick="switchParentTab('settings')">הגדרות מערכת</div>
+                <div class="parent-tab" onclick="switchParentTab('achievements')">הישגים ופרסים</div>
+                <div class="parent-tab" onclick="switchParentTab('backup')">גיבוי ושחזור</div>
+            </div>
+            <div class="parent-content">
+                <div class="parent-section active" id="parent-overview">
+                    <h3>סקירת חיסכון לכל הילדים</h3>
+                    <div class="parent-grid" id="parent-overview-grid">
+                        <!-- יתמלא דינמית -->
+                    </div>
+                </div>
+                <div class="parent-section" id="parent-settings">
+                    <h3>הגדרות מערכת</h3>
+                    <div class="input-group">
+                        <label for="parent-pin">קוד גישה הורה (PIN)</label>
+                        <input type="password" id="parent-pin" placeholder="הזן קוד 4 ספרות">
+                    </div>
+                    <div class="input-group">
+                        <label>ריבית חודשית (לכל הילדים)</label>
+                        <input type="number" id="global-interest-rate" min="0" max="100" step="0.1" value="5">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveParentSettings()">שמירת הגדרות</button>
+                </div>
+                <div class="parent-section" id="parent-achievements">
+                    <h3>ניהול הישגים</h3>
+                    <p>כאן תוכל/י להעניק הישגים מיוחדים לילדים שעומדים ביעדים</p>
+                    <div class="parent-grid" id="parent-achievements-grid">
+                        <!-- יתמלא דינמית -->
+                    </div>
+                </div>
+                <div class="parent-section" id="parent-backup">
+                    <h3>גיבוי ושחזור נתונים</h3>
+                    <p>שמור את הנתונים למחשב או שחזר מגיבוי קיים</p>
+                    <button class="btn btn-primary" onclick="createBackup()"><i class="fas fa-download"></i> יצירת גיבוי</button>
+                    <div class="input-group" style="margin-top: 20px;">
+                        <label>שחזור מגיבוי</label>
+                        <input type="file" id="restore-file" accept=".json">
+                    </div>
+                    <button class="btn" onclick="restoreFromBackup()"><i class="fas fa-upload"></i> שחזור</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="app-container">
+        <header>
+            <button class="theme-toggle" id="theme-toggle" title="שינוי מצב תצוגה">
+                <i class="fas fa-moon"></i>
+            </button>
+            <h1>קופת החיסכון המשפחתית</h1>
+            <p>ניהול חסכונות וריבית באופן מהנה לכל הילדים!</p>
+        </header>
+        
+        <div class="content">
+            <div id="tabs-container" class="tabs">
+                <!-- טאבים יתווספו כאן באופן דינמי -->
+                <button class="add-child-tab" id="add-child-button" onclick="openAddChildModal()">
+                    <span>הוסף ילד/ה +</span>
+                </button>
+            </div>
+            
+            <div id="tab-contents-container">
+                <!-- תוכן הטאבים יתווסף כאן באופן דינמי -->
+            </div>
+            
+            <div class="info-section">
+                <h2>הידעת? <i class="fas fa-lightbulb" style="color: var(--accent);"></i></h2>
+                <div class="info-card" id="did-you-know">
+                    <!-- תוכן יתמלא דינמית -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Child Modal -->
+    <div class="modal" id="add-child-modal">
+        <div class="modal-content">
+            <h2>הוספת ילד/ה חדש/ה</h2>
+            <div class="input-group">
+                <label for="new-child-name">שם הילד/ה</label>
+                <input type="text" id="new-child-name" placeholder="הכנס את שם הילד/ה">
+            </div>
+            <button class="btn btn-primary" onclick="confirmAddChild()">הוסף</button>
+            <button class="btn" onclick="hideModal('add-child-modal')">ביטול</button>
+        </div>
+    </div>
+    
+    <!-- Deposit Modal -->
+    <div class="modal" id="deposit-modal">
+        <div class="modal-content">
+            <h2>הפקדה לקופת החיסכון</h2>
+            <div class="input-group">
+                <label for="deposit-amount">כמה תרצה להפקיד?</label>
+                <input type="number" id="deposit-amount" min="1" value="10">
+            </div>
+            <div class="input-group">
+                <label for="deposit-reason">סיבת ההפקדה (אופציונלי)</label>
+                <select id="deposit-reason">
+                    <option value="">בחר סיבה...</option>
+                    <option value="מתנה">מתנה</option>
+                    <option value="דמי כיס">דמי כיס</option>
+                    <option value="מטלות בית">מטלות בית</option>
+                    <option value="עזרה להורים">עזרה להורים</option>
+                    <option value="ציונים טובים">ציונים טובים</option>
+                    <option value="אחר">אחר</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="confirmDeposit()">הפקדה</button>
+            <button class="btn" onclick="hideModal('deposit-modal')">ביטול</button>
+        </div>
+    </div>
+    
+    <!-- Withdraw Modal -->
+    <div class="modal" id="withdraw-modal">
+        <div class="modal-content">
+            <h2>משיכה מקופת החיסכון</h2>
+            <div class="input-group">
+                <label for="withdraw-amount">כמה תרצה למשוך?</label>
+                <input type="number" id="withdraw-amount" min="1" value="5">
+            </div>
+            <div class="input-group">
+                <label for="withdraw-reason">סיבת המשיכה (אופציונלי)</label>
+                <input type="text" id="withdraw-reason" placeholder="למה אתה מושך כסף?">
+            </div>
+            <button class="btn btn-primary" onclick="confirmWithdraw()">משיכה</button>
+            <button class="btn" onclick="hideModal('withdraw-modal')">ביטול</button>
+        </div>
+    </div>
+    
+    <!-- Add Goal Modal -->
+    <div class="modal" id="goal-modal">
+        <div class="modal-content">
+            <h2>הוספת מטרת חיסכון</h2>
+            <div class="input-group">
+                <label for="goal-name">שם המטרה</label>
+                <input type="text" id="goal-name" placeholder="למשל: אופניים חדשים">
+            </div>
+            <div class="input-group">
+                <label for="goal-amount">סכום היעד (₪)</label>
+                <input type="number" id="goal-amount" min="1" value="100">
+            </div>
+            <div class="input-group">
+                <label for="goal-icon">אייקון (אופציונלי)</label>
+                <select id="goal-icon">
+                    <option value="bicycle">אופניים 🚲</option>
+                    <option value="gamepad">משחק 🎮</option>
+                    <option value="mobile-alt">טלפון 📱</option>
+                    <option value="laptop">מחשב 💻</option>
+                    <option value="tshirt">בגדים 👕</option>
+                    <option value="plane">טיול ✈️</option>
+                    <option value="gift">מתנה 🎁</option>
+                    <option value="book">ספר 📚</option>
+                    <option value="music">מוזיקה 🎵</option>
+                    <option value="graduation-cap">לימודים 🎓</option>
+                </select>
+            </div>
+            <button class="btn btn-accent" onclick="confirmAddGoal()">הוספה</button>
+            <button class="btn" onclick="hideModal('goal-modal')">ביטול</button>
+        </div>
+    </div>
+    
+    <!-- Certificate Modal -->
+    <div class="modal" id="certificate-modal">
+        <div class="modal-content">
+            <h2>תעודת הצטיינות</h2>
+            <div class="certificate" id="certificate-content">
+                <div class="certificate-header">תעודת הצטיינות</div>
+                <div class="certificate-title">חוסך/ת מצטיין/ת</div>
+                <p>תעודה זו מוענקת ל:</p>
+                <div class="certificate-name" id="certificate-name">שם הילד/ה</div>
+                <p id="certificate-reason">על הגעה למטרת החיסכון</p>
+                <div class="certificate-date" id="certificate-date"></div>
+                <div class="certificate-stamp">הושג!</div>
+            </div>
+            <button class="print-button" onclick="printCertificate()">הדפסת התעודה</button>
+            <button class="btn" onclick="hideModal('certificate-modal')">סגירה</button>
+        </div>
+    </div>
+    
+    <!-- Simulator Modal -->
+    <div class="modal" id="simulator-modal">
+        <div class="modal-content">
+            <h2>סימולטור החלטות</h2>
+            <p>מה תעשה עם הכסף שלך?</p>
+            
+            <div class="simulator-container">
+                <h3 id="simulator-question">יש לך 100 ש"ח. מה תעשה איתם?</h3>
+                <div class="simulator-options" id="simulator-options">
+                    <!-- יתמלא דינמית -->
+                </div>
+                <div class="simulator-result" id="simulator-result"></div>
+            </div>
+            
+            <button class="btn" onclick="hideModal('simulator-modal')">סגירה</button>
+        </div>
+    </div>
+    
+    <!-- JavaScript Files -->
+    <script src="js/state.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/goals.js"></script>
+    <script src="js/transactions.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/simulator.js"></script>
+    <script src="js/parent-dashboard.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

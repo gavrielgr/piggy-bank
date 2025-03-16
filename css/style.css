@@ -1,0 +1,1016 @@
+/**
+ * קופת החיסכון המשפחתית - סגנונות בסיסיים 
+ */
+
+:root {
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #FFE66D;
+    --background: #F7F9FC;
+    --surface: #FFFFFF;
+    --text: #2D3436;
+    --text-secondary: #636E72;
+    --border: #E0E0E0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --success: #6BCB77;
+    --warning: #FFD166;
+    --error: #EF476F;
+    
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow);
+    overflow: hidden;
+}
+
+header {
+    background-color: var(--primary);
+    padding: 20px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background: none;
+    border: none;
+    z-index: 10;
+}
+
+.content {
+    padding: 20px;
+}
+
+/* מערכת כפתורים */
+.btn {
+    background-color: var(--secondary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn i {
+    font-size: 16px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px var(--shadow-hover);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+}
+
+.btn-accent {
+    background-color: var(--accent);
+    color: var(--text);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text);
+    border: 2px solid var(--border);
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* דאשבורד וסטטיסטיקות */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.dashboard {
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px var(--shadow);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard .badge-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    background-color: var(--secondary);
+    box-shadow: 0 2px 4px var(--shadow);
+    position: relative;
+}
+
+.badge-tooltip {
+    position: absolute;
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    box-shadow: 0 2px 10px var(--shadow);
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s all;
+    z-index: 100;
+}
+
+.badge:hover .badge-tooltip {
+    visibility: visible;
+    opacity: 1;
+    top: -40px;
+}
+
+.level-indicator {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--accent);
+    color: var(--text);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.balance {
+    font-size: 32px;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    margin: 10px;
+    flex: 1;
+    min-width: 100px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+/* מערכת טאבים */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px var(--shadow);
+    overflow: hidden;
+}
+
+.tab {
+    padding: 15px 20px;
+    cursor: pointer;
+    background-color: var(--background);
+    color: var(--text);
+    flex: 1;
+    text-align: center;
+    transition: all var(--transition-speed);
+    border-bottom: 3px solid transparent;
+    font-weight: bold;
+}
+
+.tab.active {
+    background-color: var(--surface);
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.add-child-tab {
+    padding: 15px 20px;
+    cursor: pointer;
+    background-color: var(--accent);
+    color: var(--text);
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* פריטי התקדמות */
+.progress-item {
+    margin-bottom: 15px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.progress-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.progress-value {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: bold;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--secondary);
+    border-radius: 4px;
+    transition: width 0.8s;
+}
+
+/* מודאלים/חלונות קופצים */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: var(--text);
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--secondary);
+    outline: none;
+}
+
+/* מטרות */
+.goals-section {
+    margin-top: 30px;
+}
+
+.goals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.goal-item {
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-item.achieved {
+    border: 2px solid var(--success);
+}
+
+.goal-item.achieved::after {
+    content: "הושג! 🎉";
+    position: absolute;
+    right: -45px;
+    top: 10px;
+    background-color: var(--success);
+    color: white;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.goal-info {
+    flex: 1;
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.goal-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+.goal-eta {
+    font-size: 12px;
+    background-color: var(--accent);
+    color: var(--text);
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.goal-progress {
+    height: 10px;
+    background-color: var(--border);
+    border-radius: 5px;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.goal-progress-bar {
+    height: 100%;
+    background-color: var(--secondary);
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 1s;
+}
+
+.goal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* מחשבון הריבית */
+.calculator-section {
+    margin-top: 30px;
+}
+
+.chart-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.btn-toggle {
+    background-color: var(--border);
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 20px;
+    color: var(--text);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-toggle.active {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.chart-container {
+    height: 250px;
+    margin-top: 20px;
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px var(--shadow);
+    overflow-x: auto;
+    position: relative;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    height: 180px;
+    padding-top: 20px;
+    min-width: 600px;
+    position: relative;
+}
+
+.chart-bar {
+    flex: 1;
+    margin: 0 5px;
+    background-color: var(--secondary);
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    min-height: 20px;
+    min-width: 30px;
+    transition: height 0.8s;
+}
+
+.chart-bar::before {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--text);
+}
+
+.chart-bar::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* הגדרות */
+.settings-section {
+    margin-top: 30px;
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px var(--shadow);
+    display: none;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.settings-card {
+    background-color: var(--surface);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.settings-card h4 {
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+/* מדור הידעת */
+.info-section {
+    margin-top: 30px;
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.info-card {
+    margin-top: 15px;
+    border-right: 4px solid var(--accent);
+    padding: 10px 15px;
+    background-color: var(--background);
+    border-radius: 8px;
+}
+
+.info-card h3 {
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.info-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* הודעות Toast */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background-color: var(--surface);
+    color: var(--text);
+    margin-top: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    animation: toast-slide-in 0.3s forwards, toast-slide-out 0.3s 5s forwards;
+    max-width: 300px;
+}
+
+.toast.success {
+    border-right: 4px solid var(--success);
+}
+
+.toast.error {
+    border-right: 4px solid var(--error);
+}
+
+.toast.info {
+    border-right: 4px solid var(--secondary);
+}
+
+.toast i {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 3px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.toast-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: toast-progress 5s linear forwards;
+}
+
+@keyframes toast-progress {
+    to { width: 0%; }
+}
+
+@keyframes toast-slide-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-slide-out {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* שכבת הודעות ריבית */
+.interest-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
+
+.interest-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.interest-message {
+    background-color: var(--surface);
+    color: var(--text);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.5s;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+}
+
+.interest-overlay.active .interest-message {
+    transform: scale(1);
+}
+
+.interest-close {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--text-secondary);
+}
+
+.interest-amount {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--success);
+    margin: 15px 0;
+}
+
+.interest-icon {
+    font-size: 40px;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.interest-confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: confetti-fall 2s linear forwards;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+}
+
+/* תעודות והישגים */
+.certificate {
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: var(--surface);
+    border: 10px solid var(--accent);
+    padding: 30px;
+    text-align: center;
+    color: var(--text);
+    position: relative;
+}
+
+.certificate-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+    position: relative;
+}
+
+.certificate-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+.certificate-title {
+    font-size: 28px;
+    margin: 20px 0;
+    color: var(--primary);
+}
+
+.certificate-name {
+    font-size: 24px;
+    margin: 15px 0;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+.certificate-date {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.certificate-stamp {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 12px;
+    transform: rotate(-15deg);
+}
+
+.print-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+}
+
+/* פאנל ניהול הורים */
+.parent-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.parent-controls.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.parent-panel {
+    background-color: var(--surface);
+    color: var(--text);
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    max-height: 700px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.parent-header {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parent-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.parent-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.parent-tabs {
+    display: flex;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.parent-tab {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.parent-tab.active {
+    background-color: var(--surface);
+    border-bottom: 3px solid var(--primary);
+}
+
+.parent-section {
+    display: none;
+    padding: 20px 0;
+}
+
+.parent-section.active {
+    display: block;
+}
+
+.parent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.parent-card {
+    background-color: var(--background);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--shadow);
+}
+
+/* סימולטור החלטות */
+.simulator-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--background);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px var(--shadow);
+}
+
+.simulator-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.simulator-option {
+    padding: 15px;
+    background-color: var(--surface);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid var(--border);
+}
+
+.simulator-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--shadow);
+    border-color: var(--accent);
+}
+
+.simulator-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--surface);
+    border-radius: 10px;
+    display: none;
+}
+
+.simulator-result.active {
+    display: block;
+    animation: fade-in 0.5s;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .certificate, .certificate * {
+        visibility: visible;
+    }
+    
+    .certificate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 50px;
+    }
+    
+    .print-button {
+        display: none;
+    }
+}

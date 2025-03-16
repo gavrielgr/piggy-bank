@@ -1,0 +1,187 @@
+/**
+ * קופת החיסכון המשפחתית - סגנונות רספונסיביים
+ */
+
+/* התאמה למכשירים בינוניים (טאבלטים) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .dashboard-container {
+        padding: 15px;
+    }
+    
+    .balance {
+        font-size: 28px;
+    }
+    
+    .stat-value {
+        font-size: 20px;
+    }
+    
+    .settings-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .parent-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* התאמה למכשירים קטנים (מובייל) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+        justify-content: center;
+    }
+    
+    .tab {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+    }
+    
+    .stat-item {
+        margin: 5px 0;
+        width: 100%;
+    }
+    
+    .chart-container {
+        padding: 10px;
+        height: 200px;
+    }
+    
+    .chart-bars {
+        min-width: 450px;
+    }
+    
+    .chart-bar::before {
+        font-size: 10px;
+    }
+    
+    .chart-bar::after {
+        font-size: 9px;
+    }
+    
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .parent-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .parent-tab {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .certificate {
+        padding: 15px;
+    }
+    
+    .certificate-title {
+        font-size: 24px;
+    }
+    
+    .certificate-name {
+        font-size: 20px;
+    }
+    
+    .simulator-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* התאמות לגודל מסך קטן במיוחד */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 22px;
+    }
+    
+    .level-indicator,
+    .badge-container {
+        position: static;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .badge-container {
+        justify-content: center;
+    }
+    
+    .chart-bars {
+        min-width: 350px;
+    }
+    
+    .goal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .goal-eta {
+        margin-top: 5px;
+    }
+}
+
+/* התאמה למסכים גדולים */
+@media (min-width: 1200px) {
+    .app-container {
+        max-width: 1000px;
+    }
+}
+
+/* התאמות לתמיכה בהתקנה כאפליקציה (PWA) */
+@media (display-mode: standalone) {
+    body {
+        padding: 0;
+    }
+    
+    .app-container {
+        max-width: none;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+}
+
+/* התאמות להדפסה */
+@media print {
+    .certificate {
+        border: 5mm solid var(--accent);
+    }
+    
+    .certificate-header {
+        font-size: 18pt;
+    }
+    
+    .certificate-title {
+        font-size: 22pt;
+    }
+    
+    .certificate-name {
+        font-size: 20pt;
+    }
+}
