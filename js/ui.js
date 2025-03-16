@@ -145,6 +145,11 @@ function createTabContent(childState, index) {
                 </div>
             </div>
             
+            <!-- Add save button here -->
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn btn-primary" onclick="saveSettings(${index})"><i class="fas fa-save"></i> שמירת הגדרות</button>
+            </div>
+            
             <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px;">
                 <h4>איפוס החשבון</h4>
                 <p>לחיצה על כפתור האיפוס תמחק את כל הנתונים של ילד זה ותאפס את החשבון למצב התחלתי.</p>
